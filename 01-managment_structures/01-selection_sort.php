@@ -1,11 +1,17 @@
 <?php
 
 function selection_sort($arr) {
-    $arr_len = count($arr);
-    $min = $arr[0];
-    for ($i = 0; $i < $arr_len; $i++) {
-        if ($min > $arr[$i]) {
-            $min = $arr[$i];
+    for ($i = 0; $i < count($arr); $i++) {
+        $min = $i;
+        for ($j = $i; count($arr); $j++) {
+            if ($arr[$j] < $arr[$min]) {
+                $min = $j;
+            }
+        }
+        if ($min != $i) {
+            $temp = $arr[$i];
+            $arr[$i] = $arr[$min];
+            $arr[$min] = $temp;
         }
     }
 }
