@@ -1,5 +1,13 @@
 <?php
 
+echo "Original array: ";
+$arr = array(6, 5, 8, 2, 16, 42, 15, 10, 20, 4);
+for ($i = 0; $i < count($arr); $i++) {
+    echo $arr[$i] . " ";
+}
+
+echo "Sorted array: ";
+
 function selection_sort($arr) {
     for ($i = 0; $i < count($arr); $i++) {
         $min = $i;
@@ -14,11 +22,11 @@ function selection_sort($arr) {
             $arr[$min] = $temp;
         }
     }
-    return $arr;
+    for ($i = 0; $i < count($arr); $i++) {
+        echo $arr[$i] . " ";
+    }
 }
 
 // Tests
-$arr = array(6, 5, 8, 2, 16, 42, 15, 10, 20, 4);
 $sorted_arr = selection_sort($arr);
-echo print_r($arr);
-echo print_r($sorted_arr);
+print_r($sorted_arr);
