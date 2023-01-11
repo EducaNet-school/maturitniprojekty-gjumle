@@ -5,8 +5,8 @@ function name_check($name) {
     $words = array();
     $words = explode(' ', $name);
     try {
-        echo $words[0];
-        echo $words[1];
+        $words[0];
+        $words[1];
     } catch (Exeption $e) {
         return 'Missing parametrs in form!';
     }
