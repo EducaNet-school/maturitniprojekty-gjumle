@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 function name_check($name) {
     // Check if the name has two words
     $words = array();
