@@ -1,7 +1,7 @@
 <?php
 
 function min_coins($amount) {
-    $coins = array(1, 2, 5, 10, 20, 50, 100, 200, 500);
+    $coins = array(1, 2, 5, 10, 20, 50, 100, 200, 500, 1000);
     $combination = array();
     for ($i = count($coins) - 1; $i >= 0; $i--) {
         while ($amount >= $coins[$i]) {
