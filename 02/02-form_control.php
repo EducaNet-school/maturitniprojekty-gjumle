@@ -26,7 +26,6 @@ function address_check($address) {
 
 if (isset($_POST['submit'])) {
     echo name_check($_POST['name']);
-    echo '<br>';
     echo address_check($_POST['address']);
 }
 
@@ -46,3 +45,9 @@ if (isset($_POST['submit'])) {
         </form>
     </body>
 </html>
+
+<?php
+
+echo $_POST['name'];
+echo "<br>";
+echo $_POST['address'];
