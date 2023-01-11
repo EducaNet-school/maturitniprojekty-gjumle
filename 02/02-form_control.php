@@ -4,14 +4,11 @@ function name_check($name) {
     // Check if the name has two words
     $words = array();
     $words = explode(' ', $name);
-    if (!$words[0] && $words[1]) {
-        return "Missing first name!";
-    }
-    elseif (!$words[1] && $words[0]) {
-        return "Missing last name!";
-    }
-    else {
-        return "Missing both first and last name!";
+    try {
+        echo $words[0];
+        echo $words[1];
+    } catch (Exeption $e) {
+        return 'Missing parametrs in form!';
     }
 }
 
