@@ -26,7 +26,7 @@ function getMinMoneyCombination($amount) {
             }
         }
     }
-    return implode(",", $coins[$amount]);
+    return "Output: " . implode(",", $coins[$amount]);
 }
 
 
