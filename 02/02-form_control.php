@@ -8,11 +8,9 @@ function name_check($name) {
     $words = explode(' ', $name);
     if (!$words[0] && $words[1]) {
         return "Missing first name!";
-    }
-    elseif (!$words[1] && $words[0]) {
+    } elseif (!$words[1] && $words[0]) {
         return "Missing last name!";
-    }
-    elseif (!$words[0] && !$words[1]) {
+    } elseif (!$words[0] && !$words[1]) {
         return "Missing both first and last name!";
     }
 }
