@@ -29,6 +29,4 @@ function getMinMoneyCombination($amount) {
     return "Output: " . implode(",", $coins[$amount]);
 }
 
-
 echo getMinMoneyCombination(1254);
-
