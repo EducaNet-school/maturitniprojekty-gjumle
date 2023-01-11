@@ -12,7 +12,7 @@ function name_check($name) {
     elseif (!$words[1] && $words[0]) {
         return "Missing last name!";
     }
-    else {
+    elseif (!$words[0] && !$words[1]) {
         return "Missing both first and last name!";
     }
 }
