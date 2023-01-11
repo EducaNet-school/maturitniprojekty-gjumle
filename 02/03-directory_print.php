@@ -7,4 +7,4 @@ function print_directory($dir) {
     }
 }
 
-echo print_directory('')
+echo print_directory('');
