@@ -24,7 +24,7 @@ class Truck extends Car {
 
     public function returnTruck() {
         $ret = parent::returnCar();
-        $ret .= ' Load: ' . $this->load;
+        $ret .= ', Load: ' . $this->load;
         return $ret;
     }
 }
@@ -39,7 +39,7 @@ class Electric extends Car {
 
     public function returnElectric() {
         $ret = parent::returnCar();
-        $ret .= ' Battery capacity: ' . $this->batteryCapacity;
+        $ret .= ', Battery capacity: ' . $this->batteryCapacity . ' Km';
         return $ret;
     }
 }
@@ -48,5 +48,7 @@ $car1 = new Car('personal', 'm-b');
 $car2 = new Truck('ford', 50);
 $car3 = new Electric('tesla', 1500);
 echo $car1->returnCar();
+echo '<br>';
 echo $car2->returnTruck();
+echo '<br>';
 echo $car3->returnElectric();
