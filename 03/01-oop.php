@@ -24,7 +24,8 @@ class Truck extends Car {
 
     public function returnTruck() {
         $ret = parent::returnCar();
-        $ret .= ', Load: ' . $this->load;
+        $ret .= ', Load: ' . $this->load . ' t';
+        $ret .= '<br>';
         return $ret;
     }
 }
@@ -40,15 +41,27 @@ class Electric extends Car {
     public function returnElectric() {
         $ret = parent::returnCar();
         $ret .= ', Battery capacity: ' . $this->batteryCapacity . ' Km';
+        $ret .= '<br>';
         return $ret;
     }
 }
 
-$car1 = new Car('personal', 'm-b');
-$car2 = new Truck('ford', 50);
-$car3 = new Electric('tesla', 1500);
-echo $car1->returnCar();
-echo '<br>';
-echo $car2->returnTruck();
-echo '<br>';
-echo $car3->returnElectric();
+// Task 1
+echo '<h1>Task 1</h1>';
+$cars = array(
+    new Car ('personal', 'm-b'),
+    new Car ('personal', 'ford'),
+    new Truck ('ford', 50),
+    new Electric ('tesla', 1500)
+);
+
+foreach ($cars as $car) {
+    if ($car instanceof Truck) {
+        echo $car->returnTruck();
+    } elseif ($car instanceof Electric) {
+        echo $car->returnElectric();
+    } else {
+        echo $car->returnCar();
+        echo '<br>';
+    }
+}
