@@ -1,5 +1,7 @@
 <?php
 
+$n = 6;
+
 function fibo($n) {
     if ($n == 1) {
         return 0;
@@ -8,7 +10,8 @@ function fibo($n) {
     } else {
         return fibo($n - 2) + fibo($n - 1);
     }
-
 }
 
-echo fibo(6);
+for ($i = 1; $i <= $n; $i++) {
+    echo fibo($i) . ' ';
+}
