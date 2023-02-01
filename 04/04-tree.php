@@ -5,7 +5,7 @@ class User {
     protected $money = 100;
     protected $users;
 
-    public function __construct($name, $users) {
+    public function __construct($name, $users = null) {
         $this->name = $name;
     }
 
@@ -14,7 +14,7 @@ class User {
     }
 
     public function getInfo() {
-        return 'Type: ' . get_class($this) . ', name: ' . $this->name . ', money: ' . $this->money . ' ';
+        return $this->name . ', ' . $this->money . ' ';
     }
 
     public function printStructure() {
@@ -30,3 +30,6 @@ class Manager extends User {
         parent::__construct($name, $users);
     }
 }
+
+$user = new User ('Petr');
+echo $user->getInfo();
