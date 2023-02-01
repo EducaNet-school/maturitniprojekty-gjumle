@@ -12,4 +12,8 @@ function arrInArr($arr) {
     }
 }
 
+function countArr($arr) {
+    // Count all values in arr
+}
+
 arrInArr($arr);
