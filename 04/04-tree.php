@@ -9,11 +9,7 @@ class User {
         $this->name = $name;
     }
 
-    public function getName() {
-        return $this->name;
-    }
-
-    public function getInfo() {
+    public function getUser() {
         return $this->name . ', ' . $this->money . ' ';
     }
 
@@ -32,4 +28,4 @@ class Manager extends User {
 }
 
 $user = new User ('Petr');
-echo $user->getInfo();
+echo $user->getUser();
