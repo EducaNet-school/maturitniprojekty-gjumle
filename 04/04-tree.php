@@ -12,12 +12,11 @@ class Employee {
     }
 
     public function getSubordinates() {
-        $subordinates = $this->subordinates;
+        $subordinates = $this->subordinates->name;
+        echo $this->name;
         echo '<ul>';
-        echo '<li>' . $this->name . '</li>';
         foreach ($subordinates as $subordinate) {
             if ($subordinates < 0) {
-                echo '<ul>';
                 $this->getSubordinates();
             } else {
                 echo '<li>' . $subordinate . '</li>';
@@ -27,7 +26,7 @@ class Employee {
     }
 }
 
-$users = array(new Employee ('Petr', 200), new Employee ('Pepa', 300), new Employee ('David', 200), new Employee ('Daniel', 200, array('Petr', 'Simon')));
+$users = array(new Employee ('Petr', 200), new Employee ('Pepa', 300), new Employee ('David', 200), new Employee ('Daniel', 200, array(new Employee ('Petr', 100), new Employee('Simon', 100))));
 foreach ($users as $user) {
     $user->getSubordinates();
 }
