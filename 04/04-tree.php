@@ -1,31 +1,33 @@
 <?php
 
-class User {
-    protected $name;
-    protected $money = 100;
-    protected $users;
+class Employee {
+    private $name;
+    private $salary;
+    private $subordinates = array();
 
-    public function __construct($name, $users = null) {
+    public function __construct($name, $salary, $subordinates = null) {
         $this->name = $name;
+        $this->salary = $salary;
+        $this->subordinates = $subordinates;
     }
 
-    public function getUser() {
-        return $this->name . ', ' . $this->money . ' ';
+    public function getSubordinates() {
+        $subordinates = $this->subordinates;
+        echo '<ul>';
+        echo '<li>' . $this->name . '</li>';
+        foreach ($subordinates as $subordinate) {
+            if ($subordinates < 0) {
+                echo '<ul>';
+                $this->getSubordinates();
+            } else {
+                echo '<li>' . $subordinate . '</li>';
+            }
+        }
+        echo '</ul>';
     }
-
 }
 
-class Manager extends User {
-    protected $money = 500;
-
-    public function __construct($name, $users = null) {
-        parent::__construct($name, $users);
-    }
-}
-
-$users = array(new User ('Petr'), new User ('Pepa'), new User ('David'), new Manager ('Daniel'));
-
+$users = array(new Employee ('Petr', 200), new Employee ('Pepa', 300), new Employee ('David', 200), new Employee ('Daniel', 200, array('Petr', 'Simon')));
 foreach ($users as $user) {
-    echo $user->getUser();
-    echo '<br>';
+    $user->getSubordinates();
 }
