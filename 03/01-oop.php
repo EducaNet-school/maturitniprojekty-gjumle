@@ -1,16 +1,14 @@
 <?php
 
 class Car {
-    protected $type;
     protected $brand;
     
-    public function __construct($type, $brand) {
-        $this->type = $type;
+    public function __construct($brand) {
         $this->brand = $brand;
     }
 
     public function returnCar() {
-        return 'Car type: ' . $this->type . ', Brand: ' . $this->brand;
+        return 'Car type: ' . get_class($this) . ', Brand: ' . $this->brand . ' ';
     }
 }
 
@@ -18,15 +16,12 @@ class Truck extends Car {
     private $load;
 
     public function __construct($brand, $load) {
-        parent::__construct($type = 'truck', $brand);
+        parent::__construct($brand, $load);
         $this->load = $load;
     }
 
-    public function returnTruck() {
-        $ret = parent::returnCar();
-        $ret .= ', Load: ' . $this->load . ' t';
-        $ret .= '<br>';
-        return $ret;
+    public function returnCar() {
+        return  'Car type: ' . get_class($this) . ', Brand: ' . $this->brand . ', Load: ' . $this->load . ' t ';
     }
 }
 
@@ -34,34 +29,24 @@ class Electric extends Car {
     private $batteryCapacity;
 
     public function __construct($brand, $batteryCapacity) {
-        parent::__construct($type = 'electric', $brand);
+        parent::__construct($brand, $batteryCapacity);
         $this->batteryCapacity = $batteryCapacity;
     }
 
-    public function returnElectric() {
-        $ret = parent::returnCar();
-        $ret .= ', Battery capacity: ' . $this->batteryCapacity . ' Km';
-        $ret .= '<br>';
-        return $ret;
+    public function returnCar() {
+        return 'Car type: ' . get_class($this) . ', Brand: ' . $this->brand . ', Battery capacity: ' . $this->batteryCapacity . ' Km ';
     }
 }
 
 // Task 1
 echo '<h1>Task 1</h1>';
 $cars = array(
-    new Car ('personal', 'm-b'),
-    new Car ('personal', 'ford'),
+    new Car ('m-b'),
+    new Car ('ford'),
     new Truck ('ford', 50),
     new Electric ('tesla', 1500)
 );
 
 foreach ($cars as $car) {
-    if ($car instanceof Truck) {
-        echo $car->returnTruck();
-    } elseif ($car instanceof Electric) {
-        echo $car->returnElectric();
-    } else {
-        echo $car->returnCar();
-        echo '<br>';
-    }
+    echo $car->returnCar();
 }
