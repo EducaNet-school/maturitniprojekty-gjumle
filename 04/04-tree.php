@@ -13,19 +13,19 @@ class User {
         return $this->name . ', ' . $this->money . ' ';
     }
 
-    public function printStructure() {
-        // Print all users below user
-    }
-
 }
 
 class Manager extends User {
     protected $money = 500;
 
-    public function __construct($name, $users) {
+    public function __construct($name, $users = null) {
         parent::__construct($name, $users);
     }
 }
 
-$user = new User ('Petr');
-echo $user->getUser();
+$users = array(new User ('Petr'), new User ('Pepa'), new User ('David'), new Manager ('Daniel'));
+
+foreach ($users as $user) {
+    echo $user->getUser();
+    echo '<br>';
+}
