@@ -2,25 +2,28 @@
 
 class Patient {
     private $id;
-    private $in;
-    private $order;
+    private $arrival;
+    private $vaccination;
     private $age;
-    private static $no = 0;
+    private static $order = 0;
 
-    public function __construct($in = null, $order = null, $age = null) {
-        $this->in;
-        $this->order = $order;
+    public function __construct($vaccination = null, $age = null) {
+        $this->vaccination = $vaccination;
         $this->age = $age;
-        self::$no++;
-        $this->id = self::$no;
+        self::$order++;
+        $this->id = self::$order;
     }
 
     public function arrival() {
-        $this->in = date('Y-m-d h:i:s');
+        $this->arrival = date('Y-m-d h:i:s');
+    }
+
+    public function getOrder($id = null) {
+        return $this->order;
     }
 }
 
-$patient = new Patient ();
+$patient = new Patient (1, 15);
 
 $patient->arrival();
 var_dump($patient);
