@@ -1,32 +1,46 @@
 <?php
 
-class Employee {
-    private $name;
-    private $salary;
-    private $subordinates = array();
+class Subordinate {
+    public $name;
+    public $salary;
+    public $subordinates = array();
 
-    public function __construct($name, $salary, $subordinates = null) {
+    function __construct($name, $salary) {
         $this->name = $name;
         $this->salary = $salary;
-        $this->subordinates = $subordinates;
     }
 
-    public function getSubordinates() {
-        $subordinates = $this->subordinates->name;
-        echo $this->name;
-        echo '<ul>';
-        foreach ($subordinates as $subordinate) {
-            if ($subordinates < 0) {
-                $this->getSubordinates();
-            } else {
-                echo '<li>' . $subordinate . '</li>';
+    function addSubordinate($subordinate) {
+        array_push($this->subordinates, $subordinate);
+    }
+
+    function renderTree() {
+        $output = '<ul>';
+        $output .= '<li>' . $this->name . ' ($' . $this->salary . ')' . '</li>';
+
+        if (count($this->subordinates) > 0) {
+            $output .= '<ul>';
+            foreach ($this->subordinates as $subordinate) {
+                $output .= $subordinate->renderTree();
             }
+            $output .= '</ul>';
         }
-        echo '</ul>';
+
+        $output .= '</ul>';
+        return $output;
     }
 }
 
-$users = array(new Employee ('Petr', 200), new Employee ('Pepa', 300), new Employee ('David', 200), new Employee ('Daniel', 200, array(new Employee ('Petr', 100), new Employee('Simon', 100))));
-foreach ($users as $user) {
-    $user->getSubordinates();
-}
+// Example usage:
+$ceo = new Subordinate('John Doe', 1000000);
+$manager1 = new Subordinate('Jane Smith', 500000);
+$manager2 = new Subordinate('Bob Johnson', 500000);
+$developer1 = new Subordinate('Alice Lee', 200000);
+$developer2 = new Subordinate('David Kim', 200000);
+
+$manager1->addSubordinate($developer1);
+$manager2->addSubordinate($developer2);
+$ceo->addSubordinate($manager1);
+$ceo->addSubordinate($manager2);
+
+echo $ceo->renderTree();
