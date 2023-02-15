@@ -33,7 +33,7 @@ CREATE TABLE award (
 CREATE TABLE m2c2a2aw (
     m2c2a2awid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     movie_id INT NOT NULL,
-    category_id INT NO NULL,
+    category_id INT NOT NULL,
     actor_id INT NOT NULL,
     award_id INT NOT NULL,
     CONSTRAINT fk_m2m FOREIGN KEY (movie_id) REFERENCES movie(mid),
