@@ -69,6 +69,20 @@ class WaitingRoom {
             unset($this->queue[$key]);
         }
     }
+
+    public static function renderPatientQueue(WaitingRoom $waitingRoom) {
+        $patient = $waitingRoom->getNextPatient();
+        while ($patient != null) {
+            echo '<tr>';
+            echo '<td>' . $patient->getName() . '</td>';
+            echo '<td>' . $patient->getAge() . '</td>';
+            echo '<td>' . ($patient->isVaccinated() ? 'Yes' : 'No') . '</td>';
+            echo '</tr>';
+
+            $waitingRoom->removePatient($patient);
+            $patient = $waitingRoom->getNextPatient();
+        }
+    }
 }
 
 ?>
@@ -106,20 +120,7 @@ class WaitingRoom {
         <tbody>
             <?php
             // Render the patient queue
-            while (!empty($waitingRoom)) {
-                $nextPatient = $waitingRoom->getNextPatient();
-                if ($nextPatient == null) {
-                    break;
-                }
-
-                echo '<tr>';
-                echo '<td>' . $nextPatient->getName() . '</td>';
-                echo '<td>' . $nextPatient->getAge() . '</td>';
-                echo '<td>' . ($nextPatient->isVaccinated() ? 'Yes' : 'No') . '</td>';
-                echo '</tr>';
-
-                $waitingRoom->removePatient($nextPatient);
-            }
+            WaitingRoom::renderPatientQueue($waitingRoom);
             ?>
         </tbody>
     </table>
