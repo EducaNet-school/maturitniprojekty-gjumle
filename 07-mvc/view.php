@@ -8,8 +8,8 @@
 
 <body>
     <h1>User Profile</h1>
-    <p>Name:<?php echo $model->user; ?></p>
-    <p>Email:<?php echo $model->email; ?></p>
+    <p>Name: <?php echo $model->user; ?></p>
+    <p>Email: <?php echo $model->email; ?></p>
 </body>
 
 </html>
