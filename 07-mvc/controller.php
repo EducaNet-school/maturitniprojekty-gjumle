@@ -1,13 +1,15 @@
 <?php
 
-class Controller {
-    private $model;
+require_once 'model.php';
 
-    public function __construct($model) {
-        $this->model = $model;
-    }
+class user_controller
+{
 
-    public function clicked() {
-        $this->model->string = "Updated Data, thanks to MVC and PHP!";
+    public function __construct()
+    {
+        $model = new user_model('John', 'john@gmial.com');
+        include 'view.php';
     }
 }
+
+new user_controller();

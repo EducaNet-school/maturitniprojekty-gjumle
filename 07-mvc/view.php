@@ -1,15 +1,15 @@
-<?php
+<!DOCTYPE html>
+<html>
 
-class Veiw {
-    private $model;
-    private $controller;
+<head>
+    <meta charset="utf-8">
+    <title>View</title>
+</head>
 
-    public function __construct($controller, $model) {
-        $this->controller = $controller;
-        $this->model = $model;
-    }
+<body>
+    <h1>User Profile</h1>
+    <p>Name:<?php echo $model->user; ?></p>
+    <p>Email:<?php echo $model->email; ?></p>
+</body>
 
-    public function output() {
-        return '<p><a href="index.php?action=clicked">' . $this->model->string . "</a></p>";
-    }
-}
+</html>
