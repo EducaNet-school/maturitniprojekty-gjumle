@@ -115,20 +115,22 @@ class Cinnema
             echo '<br>';
             echo 'Visitor age: ' . $visitor->getAge() . PHP_EOL;
             echo '<br>';
-            echo 'Movie title: ' . $movies[0]->getTitle() . PHP_EOL;
-            echo '<br>';
-            echo 'Movie cost: ' . $movies[0]->getCost() . PHP_EOL;
-            echo '<br>';
-            echo 'Movie rating: ' . $movies[0]->getRating() . PHP_EOL;
-            echo '<br>';
-            try {
-                echo Cinnema::buyTicket($visitor, $movie) . PHP_EOL;
+            foreach ($movies as $movie) {
+                echo 'Movie title: ' . $movie->getTitle() . PHP_EOL;
                 echo '<br>';
+                echo 'Movie cost: ' . $movie->getCost() . PHP_EOL;
                 echo '<br>';
-            } catch (Exception $e) {
-                echo $e->getMessage() . PHP_EOL;
+                echo 'Movie rating: ' . $movie->getRating() . PHP_EOL;
                 echo '<br>';
-                echo '<br>';
+                try {
+                    echo Cinnema::buyTicket($visitor, $movie) . PHP_EOL;
+                    echo '<br>';
+                    echo '<br>';
+                } catch (Exception $e) {
+                    echo $e->getMessage() . PHP_EOL;
+                    echo '<br>';
+                    echo '<br>';
+                }
             }
         }
     }
