@@ -25,7 +25,7 @@ class Visitor {
         $this->age = $age;
     }
 
-    public function __toString() {
+    public function toString() {
         return "Visitor age: {$this->age}, money: {$this->money}";
     }
 }

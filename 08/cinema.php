@@ -2,34 +2,40 @@
 
 function autoloadModel($className)
 {
-    $filename = "class/" . $className . ".php";
+    $filename = "./" . $className . ".php";
     if (is_readable($filename)) {
         require $filename;
     }
 }
 spl_autoload_register("autoloadModel");
 
-class Cinnema {
+class Cinnema
+{
     private $visitors = [];
     private $movies = [];
 
-    public function addVisitor(Visitor $visitor) {
+    public function addVisitor(Visitor $visitor)
+    {
         $this->visitors[] = $visitor;
     }
 
-    public function addMovie(Movie $movie) {
+    public function addMovie(Movie $movie)
+    {
         $this->movies[] = $movie;
     }
 
-    public function getVisitors() {
+    public function getVisitors()
+    {
         return $this->visitors;
     }
 
-    public function getMovies() {
+    public function getMovies()
+    {
         return $this->movies;
     }
 
-    public static function buyTicket(Visitor $visitor, Movie $movie) {
+    public static function buyTicket(Visitor $visitor, Movie $movie)
+    {
         if ($visitor->getMoney() >= $movie->getCost()) {
             $visitor->setMoney($visitor->getMoney() - $movie->getCost());
             $moneyCheck = true;
@@ -46,7 +52,8 @@ class Cinnema {
         }
     }
 
-    public static function generateVisitors($count) {
+    public static function generateVisitors($count)
+    {
         $visitors = [];
         for ($i = 0; $i < $count; $i++) {
             $visitors[] = new Visitor(rand(1, 100), rand(1, 100));
@@ -54,7 +61,8 @@ class Cinnema {
         return $visitors;
     }
 
-    public static function generateMovies($count) {
+    public static function generateMovies($count)
+    {
         $movies = [];
         for ($i = 0; $i < $count; $i++) {
             $movies[] = new Movie('Movie' . $i, rand(1, 100), rand(1, 100));
@@ -62,35 +70,36 @@ class Cinnema {
         return $movies;
     }
 
-    public static function implementCinema() {
+    public static function implementCinnema()
+    {
         $visitors = Cinnema::generateVisitors(10);
-        echo 'Visitors' . PHP_EOL;
         $movies = Cinnema::generateMovies(10);
-        echo 'Movies' . PHP_EOL;
 
         $cinnema = new Cinnema();
-        echo 'Cinnema' . PHP_EOL;
 
         foreach ($visitors as $visitor) {
             $cinnema->addVisitor($visitor);
-            $visitor->toString();
         }
 
         foreach ($movies as $movie) {
             $cinnema->addMovie($movie);
-            $movie->toString();
         }
 
         foreach ($cinnema->getVisitors() as $visitor) {
             foreach ($cinnema->getMovies() as $movie) {
+                echo 'Visitor money: ' . $visitor->getMoney() . PHP_EOL;
+                echo 'Visitor age: ' . $visitor->getAge() . PHP_EOL;
+                echo 'Movie cost: ' . $movie->getCost() . PHP_EOL;
+                echo 'Movie rating' . $movie->getRating() . PHP_EOL;
                 try {
                     echo Cinnema::buyTicket($visitor, $movie) . PHP_EOL;
                 } catch (Exception $e) {
                     echo $e->getMessage() . PHP_EOL;
                 }
+                echo '<br>';
             }
         }
     }
 }
 
-echo Cinnema::implementCinema();
+Cinnema::implementCinnema();

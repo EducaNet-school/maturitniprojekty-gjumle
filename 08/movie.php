@@ -35,7 +35,7 @@ class Movie {
         $this->rating = $rating;
     }
 
-    public function __toString() {
+    public function toString() {
         return "Movie title: {$this->title}, cost: {$this->cost}, rating: {$this->rating}";
     }
 }
